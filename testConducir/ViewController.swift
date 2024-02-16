@@ -36,7 +36,12 @@ class ViewController: UIViewController {
             do {
                 let data = try String(contentsOfFile: path, encoding: .utf8)
                 let rows = data.components(separatedBy: .newlines)
-                for row in rows {
+                for (index, row) in rows.enumerated() {
+                    // Skip the header
+                    if index == 0 {
+                        continue
+                    }
+                    
                     let columns = row.split(separator: ";").map { String($0) }
                     if columns.count == 7 || columns.count == 8 {
                         let questionNumber = Int(columns[0]) ?? 0
