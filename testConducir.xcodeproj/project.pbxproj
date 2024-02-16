@@ -16,6 +16,7 @@
 		EB5659CC2ADC1616002BEF83 /* testConducirTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5659CB2ADC1616002BEF83 /* testConducirTests.swift */; };
 		EB5659D62ADC1616002BEF83 /* testConducirUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5659D52ADC1616002BEF83 /* testConducirUITests.swift */; };
 		EB5659D82ADC1616002BEF83 /* testConducirUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5659D72ADC1616002BEF83 /* testConducirUITestsLaunchTests.swift */; };
+		EBBB20D12B7FC67600182303 /* questions.csv in Resources */ = {isa = PBXBuildFile; fileRef = EBBB20D02B7FC67600182303 /* questions.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		EB5659D12ADC1616002BEF83 /* testConducirUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testConducirUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5659D52ADC1616002BEF83 /* testConducirUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testConducirUITests.swift; sourceTree = "<group>"; };
 		EB5659D72ADC1616002BEF83 /* testConducirUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testConducirUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EBBB20D02B7FC67600182303 /* questions.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = questions.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		EB5659B32ADC1614002BEF83 /* testConducir */ = {
 			isa = PBXGroup;
 			children = (
+				EBBB20D02B7FC67600182303 /* questions.csv */,
 				EB5659B42ADC1614002BEF83 /* AppDelegate.swift */,
 				EB5659B62ADC1614002BEF83 /* SceneDelegate.swift */,
 				EB5659B82ADC1614002BEF83 /* ViewController.swift */,
@@ -233,6 +236,7 @@
 			files = (
 				EB5659C12ADC1616002BEF83 /* LaunchScreen.storyboard in Resources */,
 				EB5659BE2ADC1616002BEF83 /* Assets.xcassets in Resources */,
+				EBBB20D12B7FC67600182303 /* questions.csv in Resources */,
 				EB5659BC2ADC1614002BEF83 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
