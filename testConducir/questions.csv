@@ -1,4 +1,4 @@
-questionNumber;category;question;answer1;answer2;answer3;correctAnswerIndex;
+questionNumber;category;question;answer1;answer2;answer3;correctAnswerIndex;imageFileName
 1;;Según la Organización Mundial de la Salud, la siguiente problemática es categorizada como “pandemia” ya que constituye la décima causa de muerte en todo el mundo;Verdadero;Falso;;0;
 2;;Según las últimas estadísticas del Observatorio Vial de la Ciudad de Bs. As., ¿Cuál es el rango etario con mayor número de víctimas lesionadas y fatales en siniestros viales?;Niños menores de 15 años;Jóvenes y adultos de 15 a 34 años;Adultos mayores de 35 años;1;
 3;;Según las últimas estadísticas del Observatorio Vial de la Ciudad de Bs. As., la tasa más alta de víctimas fatales como consecuencia de incidentes de tránsito (luego de los peatones) son los usuarios de:;Opción A;Opción B;Opción C;1;

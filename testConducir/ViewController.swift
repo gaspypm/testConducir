@@ -28,6 +28,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadQuestionsFromCSV()
+        questions.shuffle()
         displayQuestion()
     }
 
@@ -35,24 +36,27 @@ class ViewController: UIViewController {
         if let path = Bundle.main.path(forResource: "questions", ofType: "csv") {
             do {
                 let data = try String(contentsOfFile: path, encoding: .utf8)
-                let rows = data.components(separatedBy: .newlines)
-                for (index, row) in rows.enumerated() {
-                    // Skip the header
-                    if index == 0 {
-                        continue
-                    }
-                    
-                    let columns = row.split(separator: ";").map { String($0) }
-                    if columns.count == 7 || columns.count == 8 {
-                        let questionNumber = Int(columns[0]) ?? 0
+                let rows = data.components(separatedBy: "\n")
+                var questionNumber = 1
+                for row in rows {
+                    let columns = row.components(separatedBy: ";")
+                    if columns.count == 8 {
                         let category = columns[1]
-                        let questionText = columns[2]
-                        let answers = [columns[3], columns[4], columns[5]]
+                        let question = columns[2]
+                        let answer1 = columns[3]
+                        let answer2 = columns[4]
+                        let answer3 = columns[5].isEmpty ? nil : columns[5]
                         let correctAnswerIndex = Int(columns[6]) ?? 0
-                        let imageFileName = columns.count == 8 ? columns[7] : nil
-                        questions.append(Question(questionNumber: questionNumber, category: category, text: questionText, answers: answers, correctAnswerIndex: correctAnswerIndex, imageFileName: imageFileName))
+                        let imageFileName = columns[7].isEmpty ? nil : columns[7]
+                        var answers: [String] = [answer1, answer2]
+                        if let answer3 = answer3 {
+                            answers.append(answer3)
+                        }
+                        questions.append(Question(questionNumber: questionNumber, category: category, text: question, answers: answers, correctAnswerIndex: correctAnswerIndex, imageFileName: imageFileName))
+                        questionNumber += 1
                     }
                 }
+                questions.shuffle()
             } catch {
                 print("Error loading CSV file: \(error)")
             }
@@ -61,13 +65,27 @@ class ViewController: UIViewController {
         }
     }
 
+
+
     func displayQuestion() {
         let currentQuestion = questions[currentQuestionIndex]
-        questionLabel.text = "\(currentQuestion.questionNumber). \(currentQuestion.text)"
+        questionLabel.text = "\(currentQuestion.text)"
         for (index, answer) in currentQuestion.answers.enumerated() {
-            answerButtons[index].setTitle(answer, for: .normal)
+            if answer.isEmpty {
+                answerButtons[index].setTitle("", for: .normal)
+            } else {
+                answerButtons[index].setTitle(answer, for: .normal)
+            }
+        }
+
+        // Clear the text of the answer buttons that are not used
+        for index in currentQuestion.answers.count..<answerButtons.count {
+            answerButtons[index].setTitle("", for: .normal)
         }
     }
+
+
+
 
     func checkAnswer(selectedAnswerIndex: Int) {
         let currentQuestion = questions[currentQuestionIndex]
@@ -88,6 +106,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet var answerButtons: [UIButton]!
     @IBOutlet var scoreLabel: UILabel!
+    @IBOutlet weak var questionCounterLabel: UILabel!
     
     @IBAction func answerButton1Tapped(_ sender: UIButton) {
         checkAnswer(selectedAnswerIndex: 0)
